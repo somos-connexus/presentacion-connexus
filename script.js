@@ -93,16 +93,22 @@ animar();
 const audioFondo = document.getElementById("audio-fondo");
 const botonAudio = document.getElementById("boton-audio");
 
+// Intentar reproducir la música automáticamente al abrir la página
+audioFondo.play()
+    .then(function () {
+        botonAudio.textContent = "♫";
+        botonAudio.setAttribute("aria-label", "Pausar música");
+    })
+    .catch(function (error) {
+        console.log("El navegador bloqueó la reproducción automática");
+    });
+
+// Botón para pausar o reanudar la música
 botonAudio.addEventListener("click", function () {
     if (audioFondo.paused) {
-        audioFondo.play()
-            .then(function () {
-                botonAudio.textContent = "♫";
-                botonAudio.setAttribute("aria-label", "Pausar música");
-            })
-            .catch(function (error) {
-                console.log("No se pudo reproducir el audio:", error);
-            });
+        audioFondo.play();
+        botonAudio.textContent = "♫";
+        botonAudio.setAttribute("aria-label", "Pausar música");
     } else {
         audioFondo.pause();
         botonAudio.textContent = "♪";
