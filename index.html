@@ -364,7 +364,18 @@
         </div>
     </footer>
 
-    <!-- Conexión con el archivo JavaScript -->
-    <script src="script.js"></script>
+   <!-- Audio de fondo -->
+<audio id="audio-fondo" loop>
+    <source src="audio/ambiente.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Botón para activar y desactivar la música -->
+<button id="boton-audio" class="boton-audio" aria-label="Reproducir música">
+    ♪
+</button>
+
+<!-- Conexión con el archivo JavaScript: siempre después de los elementos -->
+<script src="script.js"></script>
+
 </body>
 </html>
