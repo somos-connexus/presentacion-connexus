@@ -1,0 +1,538 @@
+/* Variables con los tres colores oficiales de identidad de Connexus */
+:root {
+    --fondo-principal: #0C1C24;
+    --fondo-tarjeta: #112A36;
+    --verde-bosque: #1E6B52;
+    --azul-profundo: #0B396B;
+    --verde-lima: #8CC63F;
+    --crema-organico: #F2EFE4;
+    --texto-secundario: #C8D8D2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--fondo-principal);
+    color: var(--crema-organico);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Lienzo de partículas de fondo */
+#fondo-particulas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Barra superior */
+.encabezado {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.8rem 6%;
+    background-color: rgba(12, 28, 36, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid rgba(140, 198, 63, 0.25);
+}
+
+/* Título superior izquierdo más grande */
+.marca {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--crema-organico);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.marca:hover {
+    color: var(--verde-lima);
+}
+
+.menu {
+    display: flex;
+    gap: 1.4rem;
+}
+
+.menu a {
+    color: var(--texto-secundario);
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: var(--verde-lima);
+}
+
+/* Estructura general de secciones */
+.seccion {
+    padding: 5.5rem 7%;
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.etiqueta {
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--verde-lima);
+    margin-bottom: 0.4rem;
+}
+
+.titulo-seccion {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 2.3rem;
+    color: var(--crema-organico);
+    margin-bottom: 1.2rem;
+}
+
+.intro-seccion {
+    max-width: 800px;
+    color: var(--texto-secundario);
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+}
+
+/* Portada */
+.portada {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 7rem 5% 3rem;
+}
+
+.contenedor-logo {
+    width: 165px;
+    height: 165px;
+    border-radius: 58% 42% 48% 52% / 45% 55% 45% 55%;
+    background-color: var(--fondo-tarjeta);
+    border: 2px dashed var(--verde-lima);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.contenedor-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    border-radius: inherit;
+}
+
+.titulo-principal {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 5.5rem;
+    color: var(--crema-organico);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.bajada {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--verde-lima);
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo-catedra {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* Botones orgánicos */
+.boton-organico {
+    display: inline-block;
+    background-color: var(--verde-lima);
+    color: #0C1C24;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    padding: 0.85rem 2rem;
+    border-radius: 30px 18px 28px 20px;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.boton-organico:hover {
+    background-color: var(--crema-organico);
+    transform: scale(1.04);
+}
+
+.boton-chico {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--verde-lima);
+    color: #0C1C24;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.88rem;
+    padding: 0.6rem 1.3rem;
+    border-radius: 22px 12px 20px 14px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.boton-chico:hover {
+    background-color: var(--crema-organico);
+}
+
+/* Grillas y distribuciones centradas */
+.dos-columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.grilla-galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* 5 Sentidos: 3 arriba y 2 centrados abajo */
+.grilla-sentidos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem;
+}
+
+.grilla-sentidos .tarjeta-organica {
+    flex: 1 1 290px;
+    max-width: 330px;
+}
+
+/* Grilla 2x2 para las 4 activaciones transmedia con videos */
+.grilla-dos-ancha {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.texto-universo p {
+    margin-bottom: 1.2rem;
+    color: var(--texto-secundario);
+}
+
+.caja-discurso {
+    background-color: var(--fondo-tarjeta);
+    padding: 1.8rem;
+    border-radius: 28px 14px 26px 16px;
+    border-left: 5px solid var(--verde-lima);
+    margin-top: 1.5rem;
+}
+
+.caja-discurso h3 {
+    font-family: 'Nunito', sans-serif;
+    color: var(--verde-lima);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Contenedores para fotos y videos */
+.caja-imagen, .espacio-media {
+    width: 100%;
+    height: 220px;
+    background-color: var(--azul-profundo);
+    border: 2px dashed rgba(140, 198, 63, 0.55);
+    border-radius: 30px 16px 28px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.foto-galeria {
+    flex: 1 1 280px;
+    max-width: 340px;
+    height: 230px;
+    margin-bottom: 0;
+}
+
+/* Marco orgánico del universo: imagen agrandada para cubrir todo sin dejar verde en los bordes */
+.forma-organica {
+    height: 360px;
+    border-radius: 45% 55% 42% 58% / 52% 44% 56% 48%;
+    padding: 0;
+}
+
+.forma-organica img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.14);
+    border-radius: 0;
+}
+
+.video-destacado {
+    height: 320px;
+}
+
+.formato-vertical {
+    height: 380px;
+}
+
+.caja-imagen img, 
+.caja-imagen video, 
+.espacio-media img, 
+.espacio-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.espacio-media img,
+.espacio-media video {
+    border-radius: 22px 12px 20px 14px;
+}
+
+.forma-organica img {
+    border-radius: 0;
+}
+
+/* Paleta de los 3 colores de identidad */
+.paleta-colores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.muestra-color {
+    flex: 1 1 220px;
+    max-width: 340px;
+    padding: 1.6rem 1.2rem;
+    border-radius: 24px 12px 22px 14px;
+    border: 1px solid rgba(242, 239, 228, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+}
+
+/* Tarjetas */
+.tarjeta-organica {
+    background-color: var(--fondo-tarjeta);
+    padding: 1.4rem;
+    border-radius: 28px 16px 26px 18px;
+    border: 1px solid rgba(140, 198, 63, 0.18);
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-organica h4 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--verde-lima);
+    margin-bottom: 0.4rem;
+}
+
+.tarjeta-organica p {
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+}
+
+.link-texto {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: var(--verde-lima);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.link-texto:hover {
+    text-decoration: underline;
+}
+
+/* Equipo: 3 arriba y 3 abajo centrados, con fotos más grandes */
+.grilla-equipo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.8rem;
+}
+
+.tarjeta-integrante {
+    flex: 1 1 260px;
+    max-width: 310px;
+    background-color: var(--fondo-tarjeta);
+    padding: 1.8rem 1.4rem;
+    border-radius: 26px 14px 24px 16px;
+    border: 1px solid rgba(140, 198, 63, 0.18);
+    text-align: center;
+}
+
+.foto-integrante {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.1rem;
+    border-radius: 54% 46% 49% 51% / 47% 53% 47% 53%;
+    background-color: var(--azul-profundo);
+    border: 2px dashed var(--verde-lima);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.foto-integrante img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tarjeta-integrante h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+}
+
+.tarjeta-integrante p {
+    color: var(--verde-lima);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Pie de página */
+.pie-pagina {
+    background-color: #081319;
+    text-align: center;
+    padding: 4rem 5%;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(140, 198, 63, 0.25);
+}
+
+.marca-pie {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 3.5rem;
+    color: var(--crema-organico);
+    margin-bottom: 0.5rem;
+}
+
+.enlaces-finales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+    .titulo-principal {
+        font-size: 4rem;
+    }
+    .seccion {
+        padding: 4rem 6%;
+    }
+}
+
+/* Tres ilustraciones del universo: dos arriba y una centrada abajo, sin franjitas verdes */
+.grilla-universo-ilustraciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+.forma-organica-mini {
+    flex: 1 1 210px;
+    max-width: 250px;
+    height: 195px;
+    margin-bottom: 0;
+    padding: 0;
+    border-radius: 45% 55% 42% 58% / 52% 44% 56% 48%;
+}
+
+.forma-organica-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.16);
+    border-radius: 0;
+}
+
+/* Videos de YouTube incrustados */
+.espacio-media iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    border-radius: 22px 12px 20px 14px;
+}
+
+/* Videos dentro de las tarjetas transmedia */
+.formato-vertical iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Video destacado de Sincronía e instalación final */
+.video-destacado iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.boton-audio {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #222;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 0.3s;
+}
+
+.boton-audio:hover {
+    transform: scale(1.1);
+    background: #444;
+}
