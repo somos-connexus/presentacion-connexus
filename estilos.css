@@ -515,3 +515,24 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.boton-audio {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #222;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 0.3s;
+}
+
+.boton-audio:hover {
+    transform: scale(1.1);
+    background: #444;
+}
