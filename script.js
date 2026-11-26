@@ -89,3 +89,23 @@ window.addEventListener('resize', () => {
 ajustarPantalla();
 crearLuciernagas();
 animar();
+
+const audioFondo = document.getElementById("audio-fondo");
+const botonAudio = document.getElementById("boton-audio");
+
+botonAudio.addEventListener("click", function () {
+    if (audioFondo.paused) {
+        audioFondo.play()
+            .then(function () {
+                botonAudio.textContent = "♫";
+                botonAudio.setAttribute("aria-label", "Pausar música");
+            })
+            .catch(function (error) {
+                console.log("No se pudo reproducir el audio:", error);
+            });
+    } else {
+        audioFondo.pause();
+        botonAudio.textContent = "♪";
+        botonAudio.setAttribute("aria-label", "Reproducir música");
+    }
+});
